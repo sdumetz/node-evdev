@@ -1,6 +1,6 @@
 # Evdev reader for nodeJS
 
-
+An Evdev events reader.
 
 ## Why not using libevdev
 
@@ -33,6 +33,15 @@ When in raw mode, events are emitted under the name "event" with the structure :
       time : {tv_sec: <long>, tv_usec: <long>},
       type : <uint16>,
       code : <uint16>,
+      value : <uint32>
+    }
+
+#### Parsed events
+
+Events are emitted under an *"event_type"* name, with this structure :
+    {
+      time : {tv_sec: <long>, tv_usec: <long>},
+      code : <string>,
       value : <uint32>
     }
 
