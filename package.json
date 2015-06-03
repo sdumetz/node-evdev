@@ -1,8 +1,12 @@
 {
   "name": "node-evdev",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "description": "An Evdev events reader.",
   "private": false,
   "main": "lib/index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
   "os": [
     "linux"
   ],
@@ -12,5 +16,22 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "^0.11.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/klepthys/node-evdev.git"
+  },
+  "keywords": [
+    "evedev",
+    "input",
+    "joystick",
+    "gamepad",
+    "xpad"
+  ],
+  "author": "Sebastien Dumetz <s.dumetz@holusion.com> (https://github.com/klepthys)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/klepthys/node-evdev/issues"
+  },
+  "homepage": "https://github.com/klepthys/node-evdev"
 }
