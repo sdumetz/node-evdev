@@ -41,7 +41,7 @@ When in raw mode, events are emitted under the name "event" with the structure :
 
 ### Importing event codes
 
-Event codes are found [here](http://www.cs.fsu.edu/~baker/devices/lxr/http/source/linux/include/linux/input.h?v=2.6.11.8)
+Event codes are found [here](https://github.com/torvalds/linux/blob/master/include/uapi/linux/input.h)
 
 Use this regex :
     .*#define (\w*)\s*(0?x?[0-9a-f]{1,3})
