@@ -6,7 +6,7 @@ var device_streams = new read_device({});
 device_streams.on("EV_KEY",function(data){
   console.log("key : ",data.code,data.value);
 })
-streams = device_streams.search("/dev/input/by-path","event-joystick",function(err,streams){
+streams = device_streams.search("/dev/input/by-path","event-joystick",function(err){
   if(err){
     console.log("node-evdev search stream : ", err);
   }
