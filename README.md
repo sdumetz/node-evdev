@@ -25,6 +25,16 @@ get raw events or parsed (with string instead of uints).
 *<Array>*
 array of devices to read from
 
+## Opening streams
+
+You can specify evdev files to open in [options](#options). Or call the **search** method.
+
+    var reader = new EvdevReader();
+    reader.search("/dev/input/by-path","event-joystick",function(err){
+      //Err should be null.
+    });
+
+
 ## Events
 
 #### Raw events
