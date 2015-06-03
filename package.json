@@ -1,5 +1,5 @@
 {
-  "name": "node-evdev",
+  "name": "evdev",
   "version": "0.0.2",
   "description": "An Evdev events reader.",
   "private": false,
