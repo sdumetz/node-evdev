@@ -10,8 +10,17 @@ I'm open to suggestion if you think there is a way and it could be profitable by
 
 ## How it works
 
+### Internals
 Basics are simple : read from evdev character devices in /dev/input.
 Everything around is just utility functions : open files from regex.
+
+### Demo App
+
+    node index.js event-<your_event_type>
+
+Will output keyPresses from matched devices.
+This app is dead simple on purpose to be easily customizable without having to read tons of source code.
+
 
 ## Options
 
