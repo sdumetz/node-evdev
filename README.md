@@ -6,7 +6,12 @@ An Evdev events reader.
 
 I don't have the required skills to port libevdev to a nodejs native module.
 It looks like such a port would require a way to asynchronize every I/O from libevdev and I don't even know if it's possible.
-I'm open to suggestion if you think there is a way.
+I'm open to suggestion if you think there is a way and it could be profitable by any means over this one.
+
+## How it works
+
+Basics are simple : read from evdev character devices in /dev/input.
+Everything around is just utility functions : open files from regex.
 
 ## Options
 
@@ -23,7 +28,7 @@ get raw events or parsed (with string instead of uints).
 
 #### Devices
 *<Array>*
-array of devices to read from
+array of devices to read from.
 
 ## Opening streams
 
@@ -55,6 +60,9 @@ Events are emitted under an *"event_type"* name, with this structure :
       value : <uint32>
     }
 
+## TODO
+
+Add tests using mocha. Not much to test about, but worth doing anyway.
 
 ## Useful resources
 
