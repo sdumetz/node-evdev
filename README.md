@@ -71,7 +71,10 @@ Events are emitted under an *"event_type"* name, with this structure :
 
 ## TODO
 
-Add tests using mocha. Not much to test about, but worth doing anyway.
+- Add more tests
+- The app require the running user to be a member of the *"input"* group. A VM should be provided to allow for easy testing without risking to compromise the system. Alternatively, I'd be best to find a lightweight solution to safely provide inputs when testing.
+- Need a way to discover input capabilities and vendor infos like libevdev's ```libevdev_has_event_code()```.
+
 
 ## Useful resources
 
