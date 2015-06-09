@@ -7,8 +7,11 @@ var reader = new EvdevReader();
 reader.on("EV_KEY",function(data){
   console.log("key : ",data.code,data.value);
 })
-reader.search("/dev/input/by-path",process.argv[1],function(err){
+console.log("searching for event streams matching %s in : /dev/input/by-path", process.argv[1]);
+reader.search("/dev/input/by-path",process.argv[2],function(err,streams){
   if(err){
     console.log("node-evdev search stream : ", err);
+  }else{
+    console.log("found %s streams",streams.length);
   }
 });
