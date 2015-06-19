@@ -33,7 +33,7 @@ describe("evdev events",function(){
       expect(e.code).to.equal("KEY_RESERVED");
       done();
     })
-    this.reader.search(path.dirname(this.mockup.file),path.basename(this.mockup.file),function(err){
+    this.reader.open(this.mockup.file,function(err){
       expect(err).to.be.null;
       self.mockup.write([ev]);
     });
@@ -51,7 +51,7 @@ describe("evdev events",function(){
         self.mockup.write([e]);
       }
     })
-    this.reader.search(path.dirname(this.mockup.file),path.basename(this.mockup.file),function(err){
+    this.reader.open(this.mockup.file,function(err){
       expect(err).to.be.null;
       self.mockup.write([ev]);
     });
