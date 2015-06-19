@@ -8,10 +8,11 @@ reader.on("EV_KEY",function(data){
   console.log("key : ",data.code,data.value);
 })
 console.log("searching for event streams matching %s in : /dev/input/by-path", process.argv[1]);
-reader.search("/dev/input/by-path",process.argv[2],function(err,streams){
+reader.search("/dev/input/by-path",process.argv[2],function(err,files){
   if(err){
     console.log("node-evdev search stream : ", err);
   }else{
-    console.log("found %s streams",streams.length);
+    console.log("found %s inputs",files.length);
+    reader.open(files[0]);
   }
 });
