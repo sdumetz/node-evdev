@@ -1,5 +1,5 @@
 var Mockup = require("./mockups/fsMockup");
-var EvdevReader = require("../lib");
+
 var path = require("path");
 var fs = require("fs");
 describe("evdev events",function(){

@@ -13,6 +13,9 @@ reader.search("/dev/input/by-path",process.argv[2],function(err,files){
     console.log("node-evdev search stream : ", err);
   }else{
     console.log("found %s inputs",files.length);
-    reader.open(files[0]);
+    var device = reader.open(files[0]);
+    device.on("open",function(){
+      console.log(device.id);
+    })
   }
 });
