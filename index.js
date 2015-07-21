@@ -11,7 +11,7 @@ console.log("searching for event streams matching %s in : /dev/input/by-path", p
 reader.search("/dev/input/by-path",process.argv[2],function(err,files){
   if(err){
     console.log("node-evdev search stream : ", err);
-  }else{
+  }else if(files[0]){
     console.log("found %s inputs",files.length);
     var device = reader.open(files[0]);
     device.on("open",function(){
