@@ -27,7 +27,6 @@ This app is dead simple on purpose to be easily customizable without having to r
 ### Example :
     {
       raw:false
-      devices:[]
     }
 
 ### Options Explained
@@ -35,9 +34,7 @@ This app is dead simple on purpose to be easily customizable without having to r
 *<bool>*
 get raw events or parsed (with string instead of uints).
 
-#### Devices
-*<Array>*
-array of devices to read from.
+
 
 ## Opening streams
 
