@@ -6,6 +6,12 @@ var reader = new EvdevReader();
 
 reader.on("EV_KEY",function(data){
   console.log("key : ",data.code,data.value);
+}).on("EV_ABS",function(data){
+  console.log("Absoltue axis : ",data.code,data.value);
+}).on("EV_REL",function(data){
+  console.log("Relative axis : ",data.code,data.value);
+}).on("error",function(e){
+  console.log("reader error : ",e);
 })
 console.log("searching for event streams matching %s in : /dev/input/by-path", process.argv[1]);
 reader.search("/dev/input/by-path",process.argv[2],function(err,files){
