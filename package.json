@@ -11,7 +11,9 @@
   "os": [
     "linux"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "nan": "^2.0.9"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "^0.11.2",
