@@ -1,7 +1,9 @@
 var Mockup = require("./mockups/fsMockup");
 var EvdevReader = require("../lib");
+var DeviceReader = require("../lib/Device");
 var path = require("path");
 var fs = require("fs");
+var stream = require('stream');
 describe("evdev open",function(){
   beforeEach(function(done){
     this.mockup = new Mockup();
@@ -15,7 +17,7 @@ describe("evdev open",function(){
   it("from path",function(done){
     var self = this;
     var stream = this.reader.open(this.mockup.file);
-    expect(stream).to.be.instanceof(fs.ReadStream);
+    expect(stream).to.be.instanceof(DeviceReader);
     stream.on("open",function(fd){
       expect(fd).to.be.a("number");
       done();
