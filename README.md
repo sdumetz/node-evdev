@@ -4,26 +4,19 @@ An Evdev events reader.
 
 Quick test : see [index.js](/sdumetz/blob/master/index.js). Will open any plugged joystick and display events as they come.
 
+    node index.js event-<your_event_type>
+    #Example with joysticks/gamepads :
+    node index.js event-joystick
 
-## Why not using libevdev
+This app is dead simple on purpose to be easily customizable without having to read tons of source code.
 
-I don't have the required skills to port libevdev to a nodejs native module.
-It looks like such a port would require a way to asynchronize every I/O from libevdev and I don't even know if it's possible.
-I'm open to suggestion if you think there is a way and it could be profitable by any means over this one.
 
 ## How it works
 
 ### Internals
-Basics are simple : read from evdev character devices in /dev/input.
-Everything around is just utility functions : open files from regex.
+Basics are simple : find event devices, open them and listen for events.
 
-### Demo App
-
-    node index.js event-<your_event_type>
-
-Will output keyPresses from matched devices.
-This app is dead simple on purpose to be easily customizable without having to read tons of source code.
-
+Events are parsed in plain js. C++ native code is only used to make queries.
 
 ## Options
 

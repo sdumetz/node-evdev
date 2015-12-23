@@ -14,15 +14,7 @@ describe("evdev open",function(){
     this.reader.close();
     this.mockup.cleanup(done);
   });
-  it("from path",function(done){
-    var self = this;
-    var stream = this.reader.open(this.mockup.file);
-    expect(stream).to.be.instanceof(DeviceReader);
-    stream.on("open",function(fd){
-      expect(fd).to.be.a("number");
-      done();
-    })
-  });
+
   it("from fd",function(done){
     var self = this;
     fs.open(this.mockup.file,'r',function(err,file){
