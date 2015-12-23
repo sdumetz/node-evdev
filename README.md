@@ -2,6 +2,9 @@
 
 An Evdev events reader.
 
+Quick test : see [index.js](/sdumetz/blob/master/index.js). Will open any plugged joystick and display events as they come.
+
+
 ## Why not using libevdev
 
 I don't have the required skills to port libevdev to a nodejs native module.
