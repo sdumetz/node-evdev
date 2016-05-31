@@ -12,7 +12,7 @@
     "linux"
   ],
   "dependencies": {
-    "nan": "^2.0.9"
+    "nan": "^2.3.4"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
