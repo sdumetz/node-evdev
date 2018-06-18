@@ -6,9 +6,11 @@ Quick test : see [index.js](/sdumetz/blob/master/index.js). Will open any plugge
 
     node index.js event-<your_event_type>
     #Example with joysticks/gamepads :
-    node index.js event-joystick
+    node index.js "event-joystick"
+    # If you have multiple similar devices, you can select by index with a third argument :
+    node index.js "event-joystick" 1
 
-This app is dead simple on purpose to be easily customizable without having to read tons of source code.
+This app is dead simple on purpose to be easily customizable without having to read tons of source code. Please note that this module's main purpose is to provide an easy programming interface for nodejs modules, not a full-featured command line interface.
 
 
 ## How it works
