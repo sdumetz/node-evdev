@@ -2,7 +2,7 @@
 
 An Evdev events reader.
 
-Quick test : see [index.js](/sdumetz/blob/master/index.js). Will open any plugged joystick and display events as they come.
+Quick test : see [index.js](https://github.com/sdumetz/blob/master/index.js). Will open any plugged joystick and display events as they come.
 
     node index.js event-<your_event_type>
     #Example with joysticks/gamepads :
