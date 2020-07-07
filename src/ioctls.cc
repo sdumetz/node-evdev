@@ -1,4 +1,5 @@
-#include <nan.h>
+#include <node_api.h>
+#include <assert.h>
 #include <sys/ioctl.h>
 #include <linux/input.h>
 #include <fcntl.h>
@@ -6,34 +7,82 @@
 #include <stdio.h>
 #include <string.h>
 
-using v8::FunctionTemplate;
-using v8::Handle;
-using v8::Object;
-using v8::String;
-using Nan::GetFunction;
-using Nan::New;
-using Nan::Set;
-using Nan::To;
+napi_value EvdevNewFromFd(napi_env env, napi_callback_info info) {
+  napi_status status;
 
+  size_t argc = 1;
+  napi_value args[1];
+  status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+  assert(status == napi_ok);
 
-NAN_METHOD(evdev_new_from_fd) {
+  if (argc < 1) {
+    napi_throw_type_error(env, nullptr, "Wrong number of arguments");
+    return nullptr;
+  }
+
+  napi_valuetype valuetypeArg0;
+  status = napi_typeof(env, args[0], &valuetypeArg0);
+  assert(status == napi_ok);
+
+  if (valuetypeArg0 != napi_number) {
+    napi_throw_type_error(env, nullptr, "Wrong arguments");
+    return nullptr;
+  }
+
+  int fd;
+  napi_get_value_int32(env, args[0], &fd);
+  assert(status == napi_ok);
+
   int rc;
   struct input_id id;
-  rc = ioctl(To<int>(info[0]).FromJust(), EVIOCGID, &id);
+  rc = ioctl(fd, EVIOCGID, &id);
   if(rc == -1 ){
-    Nan::ThrowError(strerror(errno));
-    //Nan::ThrowError(info[0]);
+    napi_throw_type_error(env, nullptr, strerror(errno));
+    return nullptr;
   }
-  v8::Local<v8::Object> size = Nan::New<v8::Object>();
-  Nan::Set(size,Nan::New("bustype").ToLocalChecked(), Nan::New<v8::Number>((double)id.bustype));
-  Nan::Set(size,Nan::New("vendor").ToLocalChecked(), Nan::New<v8::Number>((double)id.vendor));
-  Nan::Set(size,Nan::New("product").ToLocalChecked(), Nan::New<v8::Number>((double)id.product));
-  Nan::Set(size,Nan::New("version").ToLocalChecked(), Nan::New<v8::Number>((double)id.version));
-  info.GetReturnValue().Set(size);
+
+  napi_value size;
+  status = napi_create_object(env, &size);
+  assert(status == napi_ok);
+
+  napi_value asdf;
+  status = napi_create_double(env, (double)id.bustype, &asdf);
+  assert(status == napi_ok);
+  status = napi_set_named_property(env, size, "bustype", asdf);
+  assert(status == napi_ok);
+
+  status = napi_create_double(env, (double)id.vendor, &asdf);
+  assert(status == napi_ok);
+  status = napi_set_named_property(env, size, "vendor", asdf);
+  assert(status == napi_ok);
+
+  status = napi_create_double(env, (double)id.product, &asdf);
+  assert(status == napi_ok);
+  status = napi_set_named_property(env, size, "product", asdf);
+  assert(status == napi_ok);
+
+  status = napi_create_double(env, (double)id.version, &asdf);
+  assert(status == napi_ok);
+  status = napi_set_named_property(env, size, "version", asdf);
+  assert(status == napi_ok);
+
+  // if (napi_ok != ) {
+  //   Napi::TypeError::New(env, "unable to create Number from bustype").ThrowAsJavaScriptException();
+  // }
+  // size.Set("bustype", bustype);
+
+  return size;
 }
 
-NAN_MODULE_INIT(Init) {
-  Nan::Set(target, Nan::New("evdev_new_from_fd").ToLocalChecked(),GetFunction(Nan::New<FunctionTemplate>(evdev_new_from_fd)).ToLocalChecked());
+napi_value Init(napi_env env, napi_value exports) {
+  napi_status status;
+
+  napi_property_descriptor evdevNewFromFdDescriptor = { "evdev_new_from_fd", 0, EvdevNewFromFd, 0, 0, 0, napi_default, 0 };
+
+  status = napi_define_properties(env, exports, 1, &evdevNewFromFdDescriptor);
+  assert(status == napi_ok);
+
+  return exports;
 }
 
-NODE_MODULE(ioctls, Init)
+NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
