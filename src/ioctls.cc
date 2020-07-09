@@ -45,25 +45,25 @@ napi_value EvdevNewFromFd(napi_env env, napi_callback_info info) {
   status = napi_create_object(env, &size);
   assert(status == napi_ok);
 
-  napi_value asdf;
-  status = napi_create_double(env, (double)id.bustype, &asdf);
+  napi_value valueTransfer;
+  status = napi_create_double(env, (double)id.bustype, &valueTransfer);
   assert(status == napi_ok);
-  status = napi_set_named_property(env, size, "bustype", asdf);
-  assert(status == napi_ok);
-
-  status = napi_create_double(env, (double)id.vendor, &asdf);
-  assert(status == napi_ok);
-  status = napi_set_named_property(env, size, "vendor", asdf);
+  status = napi_set_named_property(env, size, "bustype", valueTransfer);
   assert(status == napi_ok);
 
-  status = napi_create_double(env, (double)id.product, &asdf);
+  status = napi_create_double(env, (double)id.vendor, &valueTransfer);
   assert(status == napi_ok);
-  status = napi_set_named_property(env, size, "product", asdf);
+  status = napi_set_named_property(env, size, "vendor", valueTransfer);
   assert(status == napi_ok);
 
-  status = napi_create_double(env, (double)id.version, &asdf);
+  status = napi_create_double(env, (double)id.product, &valueTransfer);
   assert(status == napi_ok);
-  status = napi_set_named_property(env, size, "version", asdf);
+  status = napi_set_named_property(env, size, "product", valueTransfer);
+  assert(status == napi_ok);
+
+  status = napi_create_double(env, (double)id.version, &valueTransfer);
+  assert(status == napi_ok);
+  status = napi_set_named_property(env, size, "version", valueTransfer);
   assert(status == napi_ok);
 
   // if (napi_ok != ) {
