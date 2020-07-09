@@ -66,11 +66,6 @@ napi_value EvdevNewFromFd(napi_env env, napi_callback_info info) {
   status = napi_set_named_property(env, size, "version", valueTransfer);
   assert(status == napi_ok);
 
-  // if (napi_ok != ) {
-  //   Napi::TypeError::New(env, "unable to create Number from bustype").ThrowAsJavaScriptException();
-  // }
-  // size.Set("bustype", bustype);
-
   return size;
 }
 
