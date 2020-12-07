@@ -39,5 +39,5 @@
     "url": "https://github.com/klepthys/node-evdev/issues"
   },
   "homepage": "https://github.com/klepthys/node-evdev",
-  "typings": "types.d.ts"
+  "typings": "index.d.ts"
 }
