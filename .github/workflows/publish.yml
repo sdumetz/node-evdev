@@ -26,7 +26,7 @@ jobs:
     - name: Use npmjs.org registry
       uses: actions/setup-node@v1
       with:
-        registry-url: https://registry.npmjs.org/
+        registry-url: https://registry.npmjs.com/
     - name: publish to npmjs.com
       run: |
         npm publish --access public
