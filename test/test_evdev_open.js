@@ -15,12 +15,12 @@ describe("evdev open",function(){
     this.mockup.cleanup(done);
   });
 
-  it("from fd",function(done){
+  it.skip("from fd",function(done){
     var self = this;
     fs.open(this.mockup.file,'r',function(err,file){
       expect(err).to.be.null;
       expect(file).to.be.a("number");
-      var stream = self.reader.open(file,function(err,fd){
+      var stream = self.reader.open(file, function(err,fd){
         expect(fd).to.be.a("number");
         done();
       });
