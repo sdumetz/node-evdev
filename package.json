@@ -37,5 +37,6 @@
   "bugs": {
     "url": "https://github.com/klepthys/node-evdev/issues"
   },
-  "homepage": "https://github.com/klepthys/node-evdev"
+  "homepage": "https://github.com/klepthys/node-evdev",
+  "typings": "index.d.ts"
 }
