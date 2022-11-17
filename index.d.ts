@@ -3,17 +3,13 @@ export namespace Evdev {
     raw?: boolean;
   };
 
-  enum EventType {
-    EV_KEY = 'EV_KEY',
-    EV_ABS = 'EV_ABS',
-    EV_SYN = 'EV_SYN',
-  }
+  type EventType = "EV_KEY" | "EV_ABS" | "EV_SYN";
 
   type Event = {
     type: EventType;
     code: string;
     value: string | number;
-    time: string;
+    time: { tv_sec: number; tv_usec: number };
   };
 
   class Device {
